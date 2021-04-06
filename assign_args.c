@@ -8,7 +8,7 @@
  */
 char **assign_args(char **av, char *str)
 {
-	char *token = NULL, delimiter[] = " ";
+	char *token = NULL, delimiter[] = " \n\t\v\r";
 	int i = 0;
 
 	if (str == NULL)

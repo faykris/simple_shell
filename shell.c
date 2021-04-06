@@ -10,23 +10,26 @@
  */
 int main(int argc, char **argv)
 {
-	int exit_ind = 0; 
-	char *string = NULL, quit[] = "quit";
+	char *string = NULL;
 	char *executable = argv[0];
 
-	while (exit_ind == 0)
+	while (1)
 	{
 		string = get_line_com();
 
 		argv = assign_args(argv, string);
 
-		if (*string == *quit)
+		if (_strcmp(string, EXIT) == 0)
 		{
-			exit_ind = 1;
+			break;
 		}
 		else if (argv[0] != NULL)
 		{
 			exec_com( argv, executable);
+		}
+		if (!isatty(STDIN_FILENO))
+		{
+			break;
 		}
 	}
 	argc = argc;

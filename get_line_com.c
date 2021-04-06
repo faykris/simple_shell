@@ -7,32 +7,28 @@
  */
 char *get_line_com()
 {
-	int fd = 0, i = 0;
+	int fd = 0;
 	char *str = NULL;
 	ssize_t byt_written = 0;
 	size_t num_bytes = 0;
 
 	write(fd, PROMPT, 9);
-	if (fd == -1)
-	{
-		dprintf(STDERR_FILENO, "Usage: Can't write prompt %s\n", PROMPT);
-		exit(90);
-	}
 
 	byt_written = getline(&str, &num_bytes, stdin);
-	if (byt_written == -1)
+	if(byt_written == EOF)
+	{
+		if (isatty(STDIN_FILENO))
+		{
+			write(STDIN_FILENO, "\n", 1);
+			free(str);
+			exit(0);
+		}
+	}
+	else if (byt_written == -1)
 	{
 		dprintf(STDERR_FILENO, "Usage: Can't use getline with %s\n", str);
 		free(str);
 		exit(91);
-	}
-
-	for (i = 0; str[i]; i++)
-	{
-		if (str[i] == '\n' || str[i] == '\t'|| str[i] == '\v')
-		{
-			str[i] = ' ';
-		}
 	}
 
 	return (str);

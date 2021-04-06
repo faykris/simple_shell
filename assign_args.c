@@ -16,7 +16,6 @@ char **assign_args(char **av, char *str)
 		return (NULL);
 	}
 	token = strtok(str, delimiter);
-	av = malloc(sizeof(char) * _strlen(str));
 	for (i = 0; token != NULL; i++)
 	{
 		av[i] = token;

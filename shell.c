@@ -21,6 +21,7 @@ int main(int argc, char **argv)
 
 		if (_strcmp(string, EXIT) == 0)
 		{
+			free(string);
 			break;
 		}
 		else if (argv[0] != NULL)
@@ -29,10 +30,12 @@ int main(int argc, char **argv)
 		}
 		if (!isatty(STDIN_FILENO))
 		{
+			free(string);
 			break;
 		}
+		free(string);
 	}
 	argc = argc;
-	free(string);
+	
 	return (EXIT_SUCCESS);
 }

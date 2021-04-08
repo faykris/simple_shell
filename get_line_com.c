@@ -5,7 +5,7 @@
  *
  * Return: string array of line command.
  */
-char *get_line_com()
+char *get_line_com(char **p_dire)
 {
 	int fd = 0;
 	char *str = NULL;
@@ -20,6 +20,8 @@ char *get_line_com()
 		if (isatty(STDIN_FILENO))
 		{
 			write(STDIN_FILENO, "\n", 1);
+			free(p_dire[0]);
+			free(p_dire);
 			free(str);
 			exit(0);
 		}
@@ -27,6 +29,8 @@ char *get_line_com()
 	else if (byt_written == -1)
 	{
 		dprintf(STDERR_FILENO, "Usage: Can't use getline with %s\n", str);
+		free(p_dire[0]);
+		free(p_dire);
 		free(str);
 		exit(91);
 	}

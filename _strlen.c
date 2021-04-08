@@ -5,14 +5,14 @@
  * @s: integer pointer variable
  * Return: len
  */
-int _strlen(char *s)
+size_t _strlen(const char *s)
 {
-	int len;
+	size_t len = 0;
 
-	while (*s != '\0')
+	while (s[len])
 	{
-		len++;
-		s++;
+		len++;	
 	}
+	len++;
 	return (len);
 }

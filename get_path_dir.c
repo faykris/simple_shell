@@ -18,7 +18,6 @@ char **get_path_dir(char **envi)
 			var[0][2] == 'T' && var[0][3] == 'H')
 		{
 			path = malloc(sizeof(char) * _strlen(var[0]));
-			
 			for (i = 5; var[0][i] != '\0'; j++, i++)
 			{
 				path[j] = var[0][i];
@@ -39,11 +38,9 @@ char **get_path_dir(char **envi)
 		for (j = 0; token != NULL; j++)
 		{
 			pdir[j] = token;
-			//printf("%s\n", pdir[j]);
 			token = strtok(NULL, delimiter);
 		}
 		pdir[j] = NULL; 
 	}
-//	free(path);
 	return (pdir);
 }

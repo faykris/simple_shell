@@ -2,6 +2,7 @@
 
 /**
  * assign_args - separate string to differents arguments
+ * @av: arguments to be stored
  * @str: command line string
  *
  * Return: list of command arguments, NULL if string is empty.

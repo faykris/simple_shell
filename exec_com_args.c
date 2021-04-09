@@ -3,13 +3,12 @@
 /**
  * exec_com_args - create other process and execute command arguments
  * @av: argument list command
- * @exec: executable file string
  * @p_dire: pointer enviroment
+ * @com: command typed by user
  *
  * Return: nothing
  */
-
-void exec_com_args(char **av, char *exec, char **p_dire)
+void exec_com_args(char **av, char **p_dire, char *com)
 {
 	int status = 0;
 	pid_t child_pid;
@@ -19,21 +18,23 @@ void exec_com_args(char **av, char *exec, char **p_dire)
 
 	if (child_pid == -1)
 	{
-		perror(exec);
+		perror(com);
 	}
 	if (child_pid == 0)
 	{
 		if (execve(av[0], av, NULL) == -1)
-		{
-			perror(exec);
+		{	
+			perror(com);
+			free(com);
 			free(av[0]);
 			free(p_dire[0]);
 			free(p_dire);
-			exit(1);
+			exit(127);
 		}
 	}
 	else
 	{
+		
 		wait(&status);
 		if (stat(av[0], &st) == 0)
 		{

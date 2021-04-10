@@ -10,5 +10,5 @@ void catch(int sig)
 {
 	sig = sig;
 	write(STDIN_FILENO,"\n",1);
-	write(STDIN_FILENO, PROMPT, 9);
+	write(STDIN_FILENO, PROMPT, 9); /* exit 130 */
 }

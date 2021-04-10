@@ -11,8 +11,10 @@
 #include <sys/wait.h>
 #include <unistd.h>
 
-/* exit command text macro*/
+/* Exit command text macro*/
 #define EXIT "exit"
+/* enviroment command text macro */
+#define ENVI "env"
 /* Prompt text macro*/
 #define PROMPT "#cisfun$ "
 
@@ -20,14 +22,20 @@
 char **assign_args(char **av, char *str);
 /* Catch SIGINT in get_line_com */
 void catch(int sig);
-/* create other process and execute command arguments */
+/* Create other process and execute command arguments */
 void exec_com_args(char **av, char **p_dire, char *exec);
+/* Frees pending allocations from memory before exit */
+void free_helper(char *av, char *exe, char *f_di, char **o_di);
 /* Print prompt, get line command and clear characters */
 char *get_line_com(char **p_dire, char *exec);
 /* Get PATH and separates their directories */
 char **get_path_dir(char **envi);
+/* Print enviroment variable */
+void print_envi(char **envi);
 /* Validate the first argument to search in path directories */
 char *search_dir_com(char *arg, char **p_dir, char *exec, unsigned int count);
+/* Validate built-in commands */
+int select_built_in(char **av, char *exe, char *f_di, char **o_di, char **env);
 
 /* Concatenates two strings*/
 char *_strcat(char *dest, char *src);

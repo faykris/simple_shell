@@ -36,7 +36,9 @@ char *search_dir_com(char *arg, char **p_dir, char *exec, unsigned int count)
 			free(str);
 			i++;
 		}
-		dprintf(STDERR_FILENO,"%s: %d: %s: not found\n", exec, count, arg);
+		dprintf(STDERR_FILENO, "%s: %u: %s: not found\n", exec, count, arg);
+		//write(STDERR_FILENO,"%s: %d: %s: not found\n", _strlen(exec) +
+		//count + _strlen(arg)); /* exit 127 */
 		return (arg);
 	}
 }

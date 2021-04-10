@@ -28,7 +28,7 @@ char **get_path_dir(char **envi)
 	}
 	if (var == NULL)
 	{
-		dprintf(STDIN_FILENO,"Usage: Can't read the PATH line");
+		write(STDERR_FILENO, "Usage: Can't read the PATH line", 31);
 		exit(91);
 	}
 	pdir = malloc(sizeof(char) * _strlen(path) + j);

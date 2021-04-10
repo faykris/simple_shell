@@ -13,8 +13,8 @@ int main(int argc, char **argv, char **envi)
 	char *string = NULL, **p_dire = NULL, *exec = NULL, *com = NULL;
 	struct stat st;
 	unsigned int count = 0;
+	int ind = 0;
 
-	
 	exec = _strdup(argv[0]);
 	p_dire = get_path_dir(envi);
 	while (1)
@@ -22,9 +22,12 @@ int main(int argc, char **argv, char **envi)
 		count++;
 		string = get_line_com(p_dire, exec);
 		argv = assign_args(argv, string);
-		if (_strcmp(string, EXIT) == 0)
+		ind = select_built_in(argv, exec, p_dire[0], p_dire, envi);
+		if (ind == 1)
 			break;
-		if (argv[0] != NULL)
+		else if (ind <= 0)
+			continue;
+		else if (argv[0] != NULL)
 		{	
 			com = strdup(argv[0]);
 			argv[0] = search_dir_com(argv[0], p_dire, exec, count);
@@ -33,19 +36,10 @@ int main(int argc, char **argv, char **envi)
 			free(com);
 		}
 		if (!isatty(STDIN_FILENO))
-		{	
 			break;
-		}
 		free(string);
 	}
-	free(exec);
-	free(string);
-	free(p_dire[0]);
-	free(p_dire);
+	free_helper(string, exec, p_dire[0], p_dire);
 	argc = argc;
-	
 	return (EXIT_SUCCESS);
 }
-
-
-

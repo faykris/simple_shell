@@ -19,22 +19,23 @@ void exec_com_args(char **av, char **p_dire, char *com)
 	if (child_pid == -1)
 	{
 		perror(com);
+		free_helper(av[0], com, p_dire[0], p_dire);
+		exit(2);
 	}
 	if (child_pid == 0)
 	{
 		if (execve(av[0], av, NULL) == -1)
 		{	
 			perror(com);
-			free(com);
-			free(av[0]);
-			free(p_dire[0]);
-			free(p_dire);
-			exit(127);
+		/*	write(STDERR_FILENO,
+				"%s: cannot access '%s': No such file or directory\n",
+				_strlen(com) + _strlen(av[0]));	 */
+			free_helper(av[0], com, p_dire[0], p_dire);
+			exit(2);	/* exit 2 */
 		}
 	}
 	else
 	{
-		
 		wait(&status);
 		if (stat(av[0], &st) == 0)
 		{

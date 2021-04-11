@@ -2,6 +2,7 @@
 #define _HOLBERTON_H_
 
 /* Used standard input libraries */
+#include <limits.h>
 #include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -22,8 +23,12 @@
 char **assign_args(char **av, char *str);
 /* Catch SIGINT in get_line_com */
 void catch(int sig);
+/* Return of number of digits of a number */
+int digits_count(unsigned int count);
 /* Create other process and execute command arguments */
 void exec_com_args(char **av, char **p_dire, char *exec);
+/* Validate exit built-in*/
+int exit_com(char **av, char *exe, char *f_di, char **o_di, size_t count);
 /* Frees pending allocations from memory before exit */
 void free_helper(char *av, char *exe, char *f_di, char **o_di);
 /* Print prompt, get line command and clear characters */
@@ -33,10 +38,17 @@ char **get_path_dir(char **envi);
 /* Print enviroment variable */
 void print_envi(char **envi);
 /* Validate the first argument to search in path directories */
-char *search_dir_com(char *arg, char **p_dir, char *exec, unsigned int count);
+char *search_dir_com(char *arg, char **p_dir, char *exec, size_t count);
 /* Validate built-in commands */
-int select_built_in(char **av, char *exe, char *f_di, char **o_di, char **env);
+int select_built_in(char **av, char *exe, char *f_di, char **o_di, char **env,
+					size_t count);
 
+/* Returns absolute value of a number */
+int _abs(int n);
+/* Iterative function to implement atoi() function */
+long _atoi(const char *s);
+/* Iterative function to implement itoa() function */
+char *_itoa(int value, char *buffer, int base);
 /* Concatenates two strings*/
 char *_strcat(char *dest, char *src);
 /* Compares two strings */

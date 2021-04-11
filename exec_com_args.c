@@ -27,9 +27,6 @@ void exec_com_args(char **av, char **p_dire, char *com)
 		if (execve(av[0], av, NULL) == -1)
 		{	
 			perror(com);
-		/*	write(STDERR_FILENO,
-				"%s: cannot access '%s': No such file or directory\n",
-				_strlen(com) + _strlen(av[0]));	 */
 			free_helper(av[0], com, p_dire[0], p_dire);
 			exit(2);	/* exit 2 */
 		}

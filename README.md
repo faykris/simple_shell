@@ -1,4 +1,4 @@
-<p align="center"><img src="https://lh5.googleusercontent.com/aqCkUhF3qL-jUfv2h6HCn9pnRehJGs6daseAdHzF7WCQ7s5g1mK0C1rRWX4MOmKlif7vl9FsHXo12w=w1317-h666" class="ndfHFb-c4YZDc-HiaYvf-RJLb9c" alt="Mostrando shell_3.JPG" aria-hidden="true"></P>
+<p align="center"><img src="https://lh4.googleusercontent.com/F5tgGRGT0DUPDGyIGqFrT9o4qQVOuWftHwfBB9a4gve4Gr83P1-CQ2TfmfoREFHi_DR8Md7nysHzyw=w763-h666"/></p>
 
 # Simple Shell :computer:
 
@@ -7,6 +7,15 @@ This repository contains the program written in C to simulate a Shell, is a comm
 interpreter where the user has an interface available through which they have the
 possibility of accessing the services of the operating system, as well as invocation
 or execution of programs.
+
+
+## Example
+This example shows that the **ls -l** command is written at the Shell prompt which
+checks whether the command exists and if so the command is interpreted and sends
+it to the kernel which executes the command to list all files and
+directories and print them on the screen
+
+<p align="center"><img src="https://imgs.developpaper.com/imgs/201810890740605.png"\>
 
 ## Compile
 In order to build the project you need to have all the files and put the following command

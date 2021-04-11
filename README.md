@@ -1,4 +1,4 @@
-<p align="center"><img src="https://lh3.googleusercontent.com/SF0q1PKNFslG14ApLWrnM5PBy2o8WICZCSAfl8AF63GKmQlsgFUbjNXJMUaahs8zwUcnvL6Lh_dKAg=w763-h666"/></p>
+<p align="center"><img src="https://lh5.googleusercontent.com/WTTC5lXCMbNugfwIz6D00GsaX-nPpWzX9EFpO55Sigff7FJmU_bwEuH0vgP4gGloImsYWxd8eIu-_Q"/></p>
 
 # Simple Shell :computer:
 

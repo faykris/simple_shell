@@ -9,10 +9,10 @@
  *
  * Return: Command argument with their respective directory
  */
-char *search_dir_com(char *arg, char **p_dir, char *exec, unsigned int count)
+char *search_dir_com(char *arg, char **p_dir, char *exec, size_t count)
 {
-	int i = 0;
-	char *str = NULL;
+	int i = 0, dig = 0;
+	char *str = NULL, *ctr = NULL;
 	struct stat st;
 	
 	if (stat(arg, &st) == 0) 
@@ -30,15 +30,19 @@ char *search_dir_com(char *arg, char **p_dir, char *exec, unsigned int count)
 			_strcat(str, "/");      
 			_strcat(str, arg);      
 			if (stat(str, &st) == 0)
-			{
 				return (str);
-			}
 			free(str);
 			i++;
 		}
-		dprintf(STDERR_FILENO, "%s: %u: %s: not found\n", exec, count, arg);
-		//write(STDERR_FILENO,"%s: %d: %s: not found\n", _strlen(exec) +
-		//count + _strlen(arg)); /* exit 127 */
+		dig = digits_count(count);
+		ctr = malloc(sizeof(char) * dig + 1);
+		write(STDERR_FILENO, exec, _strlen(exec));
+		write(STDERR_FILENO, ": ", 2);
+		write(STDERR_FILENO, _itoa(count, ctr, 10), dig);
+		write(STDERR_FILENO, ": ", 2);
+		write(STDERR_FILENO, arg,_strlen(arg));
+		perror(" ");	 /* exit 127 */
+		free(ctr);
 		return (arg);
 	}
 }

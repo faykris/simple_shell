@@ -28,7 +28,7 @@ void exec_com_args(char **av, char **p_dire, char *com)
 		{	
 			perror(com);
 			free_helper(av[0], com, p_dire[0], p_dire);
-			exit(2);	/* exit 2 */
+			exit(2);
 		}
 	}
 	else
@@ -38,5 +38,7 @@ void exec_com_args(char **av, char **p_dire, char *com)
 		{
 			free(av[0]);
 		}
+	/*	if (!isatty(STDIN_FILENO))
+			exit(2); */
 	}
 }

@@ -42,6 +42,8 @@ char *search_dir_com(char *arg, char **p_dir, char *exec, size_t count);
 /* Validate built-in commands */
 int select_built_in(char **av, char *exe, char *f_di, char **o_di, char **env,
 					size_t count);
+/* validate if the command line give only spaces */
+int val_only_spa(char *str);
 
 /* Returns absolute value of a number */
 int _abs(int n);

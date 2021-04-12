@@ -35,9 +35,11 @@ int main(int argc, char **argv, char **envi)
 				exec_com_args(argv, p_dire, com);
 			free(com);
 		}
-		if (!isatty(STDIN_FILENO))
-			break;
+		//printf("%lu\n", count);
+		//if (!isatty(STDIN_FILENO) != 0) // Si no es interactivo
+		//	break;
 		free(string);
+	
 	}
 	free_helper(string, exec, p_dire[0], p_dire);
 	argc = argc;

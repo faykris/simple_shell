@@ -24,7 +24,7 @@ int select_built_in(char **av, char *exe, char *f_di, char **o_di, char **env,
 	{
 		print_envi(env);
 		free(av[0]);
-		return 0;
+		return (0);
 	}
 	return (2);
 }

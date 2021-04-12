@@ -13,8 +13,6 @@ char *get_line_com(char **p_dire, char *exec)
 	ssize_t byt_written = 0;
 	size_t num_bytes = 0;
 
-	write(STDIN_FILENO, PROMPT, 9);
-	signal(SIGINT, &catch);
 	byt_written = getline(&str, &num_bytes, stdin);
 	if(byt_written == EOF)
 	{
@@ -24,16 +22,7 @@ char *get_line_com(char **p_dire, char *exec)
 			free_helper(str, exec, p_dire[0], p_dire);
 			exit(0);
 		}
-	}
-	else if (byt_written == -1)
-	{
-		write(STDERR_FILENO, "Usage: Can't use getline", 24);
 		free_helper(str, exec, p_dire[0], p_dire);
-		exit(91);
-	}
-	if (*str == '\0')
-	{
-		free(str);
 		exit(0);
 	}
 	if (!isatty(STDIN_FILENO) && val_only_spa(str) == 0)

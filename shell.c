@@ -15,18 +15,26 @@ int main(int argc, char **argv, char **envi)
 	size_t count = 0;
 	int ind = 0;
 
+	signal(SIGINT, &catch);
 	exec = _strdup(argv[0]);
 	p_dire = get_path_dir(envi);
 	while (1)
 	{
 		count++;
+		if (isatty(STDIN_FILENO))
+			write(STDIN_FILENO, PROMPT, 9);
 		string = get_line_com(p_dire, exec);
 		argv = assign_args(argv, string);
 		ind = select_built_in(argv, exec, p_dire[0], p_dire, envi, count);
 		if (ind == 1)
 			break;
-		else if (ind <= 0)
+		else if (ind == -1)
 			continue;
+		else if (ind == 0)
+		{
+			free(string);
+			continue;
+		}
 		else if (argv[0] != NULL)
 		{	
 			com = strdup(argv[0]);
@@ -34,10 +42,8 @@ int main(int argc, char **argv, char **envi)
 			if (stat(argv[0], &st) == 0)
 				exec_com_args(argv, p_dire, com);
 			free(com);
+			free(string);
 		}
-		if (!isatty(STDIN_FILENO))
-			break;
-		free(string);
 	}
 	free_helper(string, exec, p_dire[0], p_dire);
 	argc = argc;

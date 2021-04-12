@@ -1,5 +1,4 @@
-<p align="center"><img src="https://scontent.fbog9-1.fna.fbcdn.net/v/t1.6435-9/173093186_803840163884193_1634066376585725285_n.jpg?_nc_cat=109&ccb=1-3&_nc_sid=730e14&_nc_ohc=fvX6j0y_ZmEAX-KBsFX&_nc_ht=scontent.fbog9-1.fna&oh=ebdd46159e7de38331dc80988d533eaa&oe=60988D55
-"/></p>
+<p align="center"><img src="https://scontent.fbog9-1.fna.fbcdn.net/v/t1.6435-9/172550315_803847740550102_5114656974240732671_n.jpg?_nc_cat=105&ccb=1-3&_nc_sid=730e14&_nc_ohc=kUK7UflG3jcAX8h7E3D&_nc_ht=scontent.fbog9-1.fna&oh=84d5f07e532b6070eead4c134db20862&oe=6097F554"/></p>
 
 # Simple Shell :computer:
 

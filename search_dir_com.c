@@ -11,17 +11,17 @@
  */
 char *search_dir_com(char *arg, char **p_dir, char *exec, size_t count)
 {
-	int i = 0, dig = 0;
-	char *str = NULL; /* *ctr = NULL */
+	int i = 0; //dig = 0;
+	char *str = NULL;
 	struct stat st;
 	
-	if (stat(arg, &st) == 0) 
+	if (stat(arg, &st) == 0 && arg[0] == '/') 
 	{	
 		str = malloc(sizeof(char) * _strlen(arg) + 1);
 		str = _strcpy(str, arg);
 		return (str);
 	}
-	else 
+	else
 	{	
 		while(p_dir[i]) 
 		{	
@@ -34,21 +34,11 @@ char *search_dir_com(char *arg, char **p_dir, char *exec, size_t count)
 			free(str);
 			i++;
 		}
-		dig = digits_count(count);
-		fprintf(stderr, "%s: %d: %s: not found\n", exec, dig, arg);
+	//	dig = digits_count(count);
+		fprintf(stderr, "%s: %lu: %s: not found\n", exec, count, arg);
 		if (!isatty(STDIN_FILENO))
 			exit(127);
 
 		return (arg);
 	}
 }
-
-	/*	ctr = malloc(sizeof(char) * dig + 1);
-		write(STDERR_FILENO, exec, _strlen(exec));
-		write(STDERR_FILENO, ": ", 2);
-		write(STDERR_FILENO, _itoa(count, ctr, 10), dig);
-		write(STDERR_FILENO, ": ", 2);
-		write(STDERR_FILENO, arg,_strlen(arg));
-		write(STDERR_FILENO, ": not found\n", 12); 
-		perror(" "); */ 	 /* exit 127 */
-	/*	free(ctr); */

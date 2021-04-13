@@ -14,6 +14,13 @@ void exec_com_args(char **av, char **p_dire, char *com)
 	pid_t child_pid;
 	struct stat st;
 
+	if (!is_file(av[0])) 
+	{
+		write(STDERR_FILENO, av[0], _strlen(av[0]));
+		write(STDERR_FILENO,": Permission denied\n", 20);
+		free(av[0]);
+		return;
+	}
 	child_pid = fork();
 
 	if (child_pid == -1)
@@ -38,7 +45,7 @@ void exec_com_args(char **av, char **p_dire, char *com)
 		{
 			free(av[0]);
 		}
-	/*	if (!isatty(STDIN_FILENO))
-			exit(2); */
+		kill(child_pid, SIGKILL);
 	}
+
 }

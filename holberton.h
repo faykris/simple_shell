@@ -35,6 +35,8 @@ void free_helper(char *av, char *exe, char *f_di, char **o_di);
 char *get_line_com(char **p_dire, char *exec);
 /* Get PATH and separates their directories */
 char **get_path_dir(char **envi);
+/* Validates if argument is a file or not */
+int is_file(char *path);
 /* Print enviroment variable */
 void print_envi(char **envi);
 /* Validate the first argument to search in path directories */

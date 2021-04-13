@@ -1,5 +1,0 @@
-#!/bin/bash
-
-#---------------- Case 1 -------------------
-printf "Case 1: AUTHORS file is present\n"
-echo ls

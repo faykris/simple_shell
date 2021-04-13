@@ -24,5 +24,5 @@ char **assign_args(char **av, char *str)
 	}
 	av[i] = NULL;
 
-	return(av);
+	return (av);
 }

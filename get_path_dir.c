@@ -14,7 +14,7 @@ char **get_path_dir(char **envi)
 
 	for (var = envi; *var != NULL; ++var)
 	{
-		if (var[0][0] == 'P' && var[0][1] == 'A' && 
+		if (var[0][0] == 'P' && var[0][1] == 'A' &&
 			var[0][2] == 'T' && var[0][3] == 'H')
 		{
 			path = malloc(sizeof(char) * _strlen(var[0]));
@@ -33,14 +33,14 @@ char **get_path_dir(char **envi)
 	}
 	pdir = malloc(sizeof(char) * _strlen(path) + j);
 	token = strtok(path, delimiter);
-	if(token != NULL)
+	if (token != NULL)
 	{
 		for (j = 0; token != NULL; j++)
 		{
 			pdir[j] = token;
 			token = strtok(NULL, delimiter);
 		}
-		pdir[j] = NULL; 
+		pdir[j] = NULL;
 	}
 	return (pdir);
 }

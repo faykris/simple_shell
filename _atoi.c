@@ -3,10 +3,10 @@
 /**
  * _atoi - Iterative function to implement atoi() function
  * @s: string to be converted
- * 
+ *
  * Return: long value result of casting
  */
-long _atoi(const char* s)
+long _atoi(const char *s)
 {
 	long num = 0;
 	int i = 0;
@@ -17,5 +17,5 @@ long _atoi(const char* s)
 		i++;
 	}
 
-	return num;
+	return (num);
 }

@@ -17,7 +17,7 @@
 /* enviroment command text macro */
 #define ENVI "env"
 /* Prompt text macro*/
-#define PROMPT "#cisfun$ "
+#define PROMPT "#cshell~$ "
 
 /* Separate string to differents arguments*/
 char **assign_args(char **av, char *str);
@@ -26,7 +26,7 @@ void catch(int sig);
 /* Return of number of digits of a number */
 int digits_count(unsigned int count);
 /* Create other process and execute command arguments */
-void exec_com_args(char **av, char **p_dire, char *exec);
+void exec_com_args(char **av, char **p_dire, char *com, char *exec, size_t count);
 /* Validate exit built-in*/
 int exit_com(char **av, char *exe, char *f_di, char **o_di, size_t count);
 /* Frees pending allocations from memory before exit */
@@ -46,6 +46,8 @@ int select_built_in(char **av, char *exe, char *f_di, char **o_di, char **env,
 					size_t count);
 /* validate if the command line give only spaces */
 int val_only_spa(char *str);
+/* validate if argument is not a file or not have permissions */
+int valid_perm(char *av, char *exe, size_t count);
 
 /* Returns absolute value of a number */
 int _abs(int n);

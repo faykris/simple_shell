@@ -11,30 +11,30 @@
  */
 char *search_dir_com(char *arg, char **p_dir, char *exec, size_t count)
 {
-	int i = 0; //dig = 0;
+	int i = 0;
 	char *str = NULL;
 	struct stat st;
-	
-	if (stat(arg, &st) == 0 && arg[0] == '/') 
-	{	
+
+	if ((stat(arg, &st) == 0 && arg[0] == '/') ||
+		(arg[0] == '.' && arg[1] == '/'))
+	{
 		str = malloc(sizeof(char) * _strlen(arg) + 1);
 		str = _strcpy(str, arg);
 		return (str);
 	}
 	else
-	{	
-		while(p_dir[i]) 
-		{	
+	{
+		while (p_dir[i])
+		{
 			str = malloc(sizeof(char) * _strlen(p_dir[i]) + _strlen(arg) + 2);
-			str = _strcpy(str, p_dir[i]); 
-			_strcat(str, "/");      
-			_strcat(str, arg);      
+			str = _strcpy(str, p_dir[i]);
+			_strcat(str, "/");
+			_strcat(str, arg);
 			if (stat(str, &st) == 0)
 				return (str);
 			free(str);
 			i++;
 		}
-	//	dig = digits_count(count);
 		fprintf(stderr, "%s: %lu: %s: not found\n", exec, count, arg);
 		if (!isatty(STDIN_FILENO))
 			exit(127);

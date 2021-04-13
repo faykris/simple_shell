@@ -22,7 +22,7 @@ int main(int argc, char **argv, char **envi)
 	{
 		count++;
 		if (isatty(STDIN_FILENO))
-			write(STDIN_FILENO, PROMPT, 9);
+			write(STDIN_FILENO, PROMPT, 10);
 		string = get_line_com(p_dire, exec);
 		argv = assign_args(argv, string);
 		ind = select_built_in(argv, exec, p_dire[0], p_dire, envi, count);
@@ -40,7 +40,7 @@ int main(int argc, char **argv, char **envi)
 			com = strdup(argv[0]);
 			argv[0] = search_dir_com(argv[0], p_dire, exec, count);
 			if (stat(argv[0], &st) == 0)
-				exec_com_args(argv, p_dire, com);
+				exec_com_args(argv, p_dire, com, exec, count);
 			free(com);
 			free(string);
 		}

@@ -23,7 +23,6 @@ int exit_com(char **av, char *exe, char *f_di, char **o_di, size_t count)
 	}
 	else
 	{
-	/*	dig = digits_count(count); */
 		fprintf(stderr, "%s: %lu: %s: Illegal number: %s\n",
 				exe, count, av[0], av[1]);
 

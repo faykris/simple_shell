@@ -15,7 +15,8 @@ char *search_dir_com(char *arg, char **p_dir, char *exec, size_t count)
 	char *str = NULL;
 	struct stat st;
 
-	if (stat(arg, &st) == 0 && arg[0] == '/')
+	if ((stat(arg, &st) == 0 && arg[0] == '/') ||
+		(arg[0] == '.' && arg[1] == '/'))
 	{
 		str = malloc(sizeof(char) * _strlen(arg) + 1);
 		str = _strcpy(str, arg);

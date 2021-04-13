@@ -2,7 +2,7 @@
 
 /**
  * val_only_spa - validate if the command line give only spaces
- * @string: pointer directories to do free
+ * @str: pointer directories to do free
  *
  * Return: 0 if the stirng have only spaces, otherwise 1
  */

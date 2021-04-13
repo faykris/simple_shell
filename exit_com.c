@@ -7,11 +7,11 @@
  * @o_di: others directories path to free
  * @count: prompt count
  *
- * Return: 
+ * Return: 1 whe only exit argument, on error -1 and exit code typed
  */
 int exit_com(char **av, char *exe, char *f_di, char **o_di, size_t count)
 {
-	int e = 0, dig = 0;
+	int e = 0;
 
 	if (av[1] == NULL)
 		return (1);
@@ -23,9 +23,9 @@ int exit_com(char **av, char *exe, char *f_di, char **o_di, size_t count)
 	}
 	else
 	{
-		dig = digits_count(count);
-		fprintf(stderr, "%s: %d: %s: Illegal number: %s\n",
-				exe, dig, av[0], av[1]);
+	/*	dig = digits_count(count); */
+		fprintf(stderr, "%s: %lu: %s: Illegal number: %s\n",
+				exe, count, av[0], av[1]);
 
 		if (!isatty(STDIN_FILENO))
 		{

@@ -6,7 +6,7 @@
  * @exe: executable name
  * @f_di: first directory path to free
  * @o_di: others directories path to free
- * @envi: enviroment variable
+ * @env: enviroment variable
  * @count: prompt count
  *
  * Return: list of command arguments, NULL if string is empty.
@@ -23,7 +23,6 @@ int select_built_in(char **av, char *exe, char *f_di, char **o_di, char **env,
 	else if (_strcmp(av[0], ENVI) == 0)
 	{
 		print_envi(env);
-		free(av[0]);
 		return (0);
 	}
 	return (2);

@@ -14,10 +14,10 @@ void exec_com_args(char **av, char **p_dire, char *com)
 	pid_t child_pid;
 	struct stat st;
 
-	if (!is_file(av[0])) 
+	if (!is_file(av[0]))
 	{
 		write(STDERR_FILENO, av[0], _strlen(av[0]));
-		write(STDERR_FILENO,": Permission denied\n", 20);
+		write(STDERR_FILENO, ": Permission denied\n", 20);
 		free(av[0]);
 		return;
 	}
@@ -32,7 +32,7 @@ void exec_com_args(char **av, char **p_dire, char *com)
 	if (child_pid == 0)
 	{
 		if (execve(av[0], av, NULL) == -1)
-		{	
+		{
 			perror(com);
 			free_helper(av[0], com, p_dire[0], p_dire);
 			exit(2);

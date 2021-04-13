@@ -14,7 +14,7 @@ char *get_line_com(char **p_dire, char *exec)
 	size_t num_bytes = 0;
 
 	byt_written = getline(&str, &num_bytes, stdin);
-	if(byt_written == EOF)
+	if (byt_written == EOF)
 	{
 		if (isatty(STDIN_FILENO))
 		{

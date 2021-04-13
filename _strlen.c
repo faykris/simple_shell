@@ -3,7 +3,8 @@
 /**
  * _strlen - function that returns the length of a string
  * @s: integer pointer variable
- * Return: len
+ *
+ * Return: lenght of string
  */
 size_t _strlen(const char *s)
 {
@@ -11,7 +12,7 @@ size_t _strlen(const char *s)
 
 	while (s[len])
 	{
-		len++;	
+		len++;
 	}
 	len++;
 	return (len);

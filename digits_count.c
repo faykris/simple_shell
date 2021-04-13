@@ -25,7 +25,7 @@ int digits_count(unsigned int count)
 	else if (count > 9999999 && count <= 99999999)
 		return (8);
 	else if (count > 99999999 && count <= 999999999)
-		return (9);	
+		return (9);
 	else if (count > 999999999 && count <= UINT_MAX)
 		return (10);
 	else

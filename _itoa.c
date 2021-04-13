@@ -4,7 +4,7 @@
  * swap - function to swap two numbers
  * @x: number to be swap
  * @y: number to be swap
- * 
+ *
  * Return: Integer to string converted
  */
 void swap(char *x, char *y)
@@ -20,25 +20,25 @@ void swap(char *x, char *y)
  * @buffer: string of number converted
  * @i: number to be swap
  * @j: number to be swap
- * 
+ *
  * Return: Integer to string converted
  */
-char* rev_buffer(char *buffer, int i, int j)
+char *rev_buffer(char *buffer, int i, int j)
 {
 	while (i < j)
 	{
 		swap(&buffer[i++], &buffer[j--]);
 	}
 
-	return buffer;
+	return (buffer);
 }
 
 /**
  * _itoa - Iterative function to implement itoa() function
  * @value: integer value to be converted
  * @buffer: string of number converted
- * @base: base number to be converted 
- * 
+ * @base: base number to be converted
+ *
  * Return: Integer to string converted
  */
 char *_itoa(int value, char *buffer, int base)
@@ -47,7 +47,7 @@ char *_itoa(int value, char *buffer, int base)
 
 	if (base < 2 || base > 32)
 	{
-		return buffer;
+		return (buffer);
 	}
 	n = _abs(value);
 	i = 0;
@@ -72,7 +72,7 @@ char *_itoa(int value, char *buffer, int base)
 	{
 		buffer[i++] = '-';
 	}
-	buffer[i] = '\0'; 
+	buffer[i] = '\0';
 
-	return rev_buffer(buffer, 0, i - 1);
+	return (rev_buffer(buffer, 0, i - 1));
 }

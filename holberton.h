@@ -26,7 +26,8 @@ void catch(int sig);
 /* Return of number of digits of a number */
 int digits_count(unsigned int count);
 /* Create other process and execute command arguments */
-void exec_com_args(char **av, char **p_dire, char *com, char *exec, size_t count);
+void exec_com_args(char **av, char **p_dire, char *com, char *exec,
+					size_t count);
 /* Validate exit built-in*/
 int exit_com(char **av, char *exe, char *f_di, char **o_di, size_t count);
 /* Frees pending allocations from memory before exit */

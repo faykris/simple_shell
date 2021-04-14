@@ -2,13 +2,12 @@
 
 /**
  * print_envi - Print enviroment variable
- * @envi: enviroment vairable
  *
  * Return: nothing
  */
-void print_envi(char **envi)
+void print_envi(void)
 {
-	char **env = envi;
+	char **env = environ;
 	char *thisEnv = *env;
 
 	while (*env != 0)

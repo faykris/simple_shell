@@ -6,13 +6,12 @@
  * @exe: executable name
  * @f_di: first directory path to free
  * @o_di: others directories path to free
- * @env: enviroment variable
  * @count: prompt count
  *
  * Return: list of command arguments, NULL if string is empty.
  */
-int select_built_in(char **av, char *exe, char *f_di, char **o_di, char **env,
-				size_t count)
+int select_built_in(char **av, char *exe, char *f_di, char **o_di,
+			size_t count)
 {
 	if (av[0] == NULL)
 		return (0);
@@ -24,14 +23,13 @@ int select_built_in(char **av, char *exe, char *f_di, char **o_di, char **env,
 	{
 		if (av[1] == NULL)
 		{
-			print_envi(env);
+			print_envi();
 			return (0);
 		}
 		else
 		{
-
-			fprintf(stderr, "%s: «%s»: No such file or directory\n", 
-					av[0], av[1]); 
+			fprintf(stderr, "%s: «%s»: No such file or directory\n",
+					av[0], av[1]);
 			free(av[0]);
 			return (-1);
 		}

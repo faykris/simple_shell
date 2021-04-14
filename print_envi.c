@@ -8,12 +8,13 @@
  */
 void print_envi(char **envi)
 {
-	int i = 0;
+	char **env = envi;
+	char *thisEnv = *env;
 
-	while (envi[i])
+	while (*env != 0)
 	{
-		write(STDERR_FILENO, envi[i], _strlen(envi[i]));
-		write(STDERR_FILENO, "\n", 1);
-		i++;
+		thisEnv = *env;
+		fprintf(stdout, "%s\n", thisEnv);
+		env++;
 	}
 }

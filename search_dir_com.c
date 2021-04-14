@@ -35,7 +35,8 @@ char *search_dir_com(char *arg, char **p_dir, char *exec, size_t count)
 			free(str);
 			i++;
 		}
-		fprintf(stderr, "%s: %lu: %s: not found\n", exec, count, arg);
+		exec = exec;
+		count = count;
 		if (!isatty(STDIN_FILENO))
 			exit(127);
 

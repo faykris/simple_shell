@@ -23,9 +23,7 @@ int exit_com(char **av, char *exe, char *f_di, char **o_di, size_t count)
 	}
 	else
 	{
-		fprintf(stderr, "%s: %lu: %s: Illegal number: %s\n",
-				exe, count, av[0], av[1]);
-
+		count = count;
 		if (!isatty(STDIN_FILENO))
 		{
 			free_helper(av[0], exe, f_di, o_di);

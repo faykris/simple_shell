@@ -24,7 +24,7 @@ int main(int argc, char **argv)
 			write(STDIN_FILENO, PROMPT, 10);
 		string = get_line_com(p_dire, exec);
 		argv = assign_args(argv, string);
-		ind = select_built_in(argv, exec, p_dire[0], p_dire, environ, count);
+		ind = select_built_in(argv, exec, p_dire[0], p_dire, count);
 		if (ind == 1)
 			break;
 		else if (ind == -1)

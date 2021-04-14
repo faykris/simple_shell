@@ -28,8 +28,6 @@ int select_built_in(char **av, char *exe, char *f_di, char **o_di,
 		}
 		else
 		{
-			fprintf(stderr, "%s: «%s»: No such file or directory\n",
-					av[0], av[1]);
 			free(av[0]);
 			return (-1);
 		}

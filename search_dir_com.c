@@ -44,6 +44,8 @@ char *search_dir_com(char *arg, char **p_dir, char *exec, size_t count)
 		write(STDERR_FILENO, arg, _strlen(arg));
 		write(STDERR_FILENO, ": not found\n", 13);
 		free(ctr);
+		if (!isatty(STDIN_FILENO))
+			exit(127);
 		arg = "127";
 		return (arg);
 	}

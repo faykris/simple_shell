@@ -22,8 +22,19 @@ int select_built_in(char **av, char *exe, char *f_di, char **o_di, char **env,
 	}
 	else if (_strcmp(av[0], ENVI) == 0)
 	{
-		print_envi(env);
-		return (0);
+		if (av[1] == NULL)
+		{
+			print_envi(env);
+			return (0);
+		}
+		else
+		{
+
+			fprintf(stderr, "%s: «%s»: No such file or directory\n", 
+					av[0], av[1]); 
+			free(av[0]);
+			return (-1);
+		}
 	}
 	return (2);
 }

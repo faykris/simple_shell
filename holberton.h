@@ -1,6 +1,7 @@
 #ifndef _HOLBERTON_H_
 #define _HOLBERTON_H_
 
+#define _GNU_SOURCE
 /* Used standard input libraries */
 #include <limits.h>
 #include <signal.h>

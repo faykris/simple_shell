@@ -37,7 +37,7 @@ int main(int argc, char **argv, char **envi)
 		}
 		else if (argv[0] != NULL)
 		{
-			com = strdup(argv[0]);
+			com = _strdup(argv[0]);
 			argv[0] = search_dir_com(argv[0], p_dire, exec, count);
 			if (stat(argv[0], &st) == 0)
 				exec_com_args(argv, p_dire, com, exec, count);

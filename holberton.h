@@ -42,7 +42,7 @@ char **get_path_dir(char **envi);
 /* Validates if argument is a file or not */
 int is_file(char *path);
 /* Print enviroment variable */
-void print_envi(void);
+void print_envi(size_t count, char *exec);
 /* Validate the first argument to search in path directories */
 char *search_dir_com(char *arg, char **p_dir, char *exec, size_t count);
 /* Validate built-in commands */

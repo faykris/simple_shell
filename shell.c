@@ -4,11 +4,10 @@
  * main - prompt and line command loop
  * @argc: number of the arguments
  * @argv: content of the arguments
- * @envi: enviroment variable
  *
  * Return: Always 0 on succesfull, -1 on error.
  */
-int main(int argc, char **argv, char **envi)
+int main(int argc, char **argv)
 {
 	char *string = NULL, **p_dire = NULL, *exec = NULL, *com = NULL;
 	struct stat st;
@@ -17,7 +16,7 @@ int main(int argc, char **argv, char **envi)
 
 	signal(SIGINT, &catch);
 	exec = _strdup(argv[0]);
-	p_dire = get_path_dir(envi);
+	p_dire = get_path_dir(environ);
 	while (1)
 	{
 		count++;
@@ -25,7 +24,7 @@ int main(int argc, char **argv, char **envi)
 			write(STDIN_FILENO, PROMPT, 10);
 		string = get_line_com(p_dire, exec);
 		argv = assign_args(argv, string);
-		ind = select_built_in(argv, exec, p_dire[0], p_dire, envi, count);
+		ind = select_built_in(argv, exec, p_dire[0], p_dire, environ, count);
 		if (ind == 1)
 			break;
 		else if (ind == -1)

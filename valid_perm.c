@@ -12,7 +12,8 @@ int valid_perm(char *av, char *exe, size_t count)
 {
 	if (!is_file(av) || access(av, F_LOCK))
 	{
-		fprintf(stderr, "%s: %lu: %s: Permission denied\n", exe, count, av);
+		exe = exe;
+		count = count;
 		free(av);
 		return (1);
 	}

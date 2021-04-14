@@ -23,7 +23,7 @@ int select_built_in(char **av, char *exe, char *f_di, char **o_di,
 	{
 		if (av[1] == NULL)
 		{
-			print_envi();
+			print_envi(count, exe);
 			return (0);
 		}
 		else

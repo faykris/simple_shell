@@ -19,6 +19,8 @@
 #define ENVI "env"
 /* Prompt text macro*/
 #define PROMPT "#cshell~$ "
+/* Global variable enviroment*/
+extern char **environ;
 
 /* Separate string to differents arguments*/
 char **assign_args(char **av, char *str);

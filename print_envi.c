@@ -14,7 +14,8 @@ void print_envi(char **envi)
 	while (*env != 0)
 	{
 		thisEnv = *env;
-		fprintf(stdout, "%s\n", thisEnv);
+		write(STDOUT_FILENO, thisEnv, _strlen(thisEnv));
+		write(STDOUT_FILENO, "\n", 1);
 		env++;
 	}
 }

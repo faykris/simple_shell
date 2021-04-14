@@ -34,7 +34,7 @@ int exit_com(char **av, char *exe, char *f_di, char **o_di, size_t count)
 		write(STDERR_FILENO, ": Illegal number: ", 18);
 		write(STDERR_FILENO, av[1], _strlen(av[1]));
 		write(STDERR_FILENO, "\n", 1);
-		free(ctr); 
+		free(ctr);
 		if (!isatty(STDIN_FILENO))
 		{
 			free_helper(av[0], exe, f_di, o_di);

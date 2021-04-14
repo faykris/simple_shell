@@ -36,7 +36,7 @@ int exit_com(char **av, char *exe, char *f_di, char **o_di, size_t count);
 /* Frees pending allocations from memory before exit */
 void free_helper(char *av, char *exe, char *f_di, char **o_di);
 /* Print prompt, get line command and clear characters */
-char *get_line_com(char **p_dire, char *exec);
+char *get_line_com(char **p_dire, char *exec, int code);
 /* Get PATH and separates their directories */
 char **get_path_dir(char **envi);
 /* Validates if argument is a file or not */

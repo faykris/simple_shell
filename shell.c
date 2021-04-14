@@ -22,7 +22,7 @@ int main(int argc, char **argv)
 		count++;
 		if (isatty(STDIN_FILENO))
 			write(STDIN_FILENO, PROMPT, 10);
-		string = get_line_com(p_dire, exec);
+		string = get_line_com(p_dire, exec, code);
 		argv = assign_args(argv, string);
 		ind = select_built_in(argv, exec, p_dire[0], p_dire, count);
 		if (ind == 1)

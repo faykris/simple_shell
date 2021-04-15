@@ -1,0 +1,405 @@
+'\" t
+.\"     Title: cshell
+.\"    Author: Cristian Pinzón, Julio Cesar Arenas, Juan Sebastián Tovar.
+.\" Generator: DocBook XSL Stylesheets v1.79.1 <http://docbook.sf.net/>
+.\"      Date: April 14 del 2021
+.\"    Manual: \ \&
+.\"    Source: \ \& 1.0
+.\"  Language: English
+.\"
+.TH "CSHELL" "1" "April 14 del 2021" "\ \& 1\&.0" "\ \&"
+.\" -----------------------------------------------------------------
+.\" * Define some portability stuff
+.\" -----------------------------------------------------------------
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.\" http://bugs.debian.org/507673
+.\" http://lists.gnu.org/archive/html/groff/2009-02/msg00013.html
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.\" -----------------------------------------------------------------
+.\" * set default formatting
+.\" -----------------------------------------------------------------
+.\" disable hyphenation
+.nh
+.\" disable justification (adjust text to left margin only)
+.ad l
+.\" -----------------------------------------------------------------
+.\" * MAIN CONTENT STARTS HERE *
+.\" -----------------------------------------------------------------
+.SH "NAME"
+cshell \- interpret commands simulated by the original GNU Linux shell
+.SH "SYNOPSIS"
+.sp
+cshell [options] [file]
+.SH "DESCRIPCION"
+.sp
+Cshell es a standard system command interpreter compatible with sh which are read from the standard input or a file and interpreted from the terminal\&.The current version is in process and must be changedto meet POSIX 1003\&.2 and 1003\&.2a specifications for the shell\&.This version has many features that make it look similar in some aspects of the bash shell, but it is not a clone of the bash shell\&.Only features designated by POSIX plus some Berkeley extensions are being incorporated into this shell\&.This manualpage is not intended to be a tutorial or a complete shell specification\&.
+.SH "OVERVIEW"
+.sp
+The shell is a command that reads lines from a file or terminal, interprets them, and usually executes other commands\&.This is the program that runs when a user logs on to the system\&.The shell implements a language that has flow control constructs, a macro installation that provides a variety of features in addition to data storage\&.It incorporates many features to help interactive use and has the advantage that interpretive language is common to both interactive and non\-interactiveuse\&.That is, commands can be written directly to the running shell or placed in a file and the shell can run the file directly\&.
+.SH "INTECRACTIVE AND NON\-INTERACTIVE SHELL"
+.sp
+Interactive mode: Commands are executed within the shell execution line, until you are given the output command using Ctrl\-D for End of File (EOF) or by using the exit command\&.
+.sp
+Non\-interactive mode: Commands are executed externally by sending arguments to the executable of our shell, either a text containing the arguments or content of an archiveor
+.SH "INVOCACION"
+.sp
+In order to run the Cshell program we must first compile the filesand Run the archiveor resulting from the build\&.
+.sp
+\fBgcc \-Wall \-Wextra \-Werror \-pedantic *\&.c \-o hsh \&./hsh\fR
+.sp
+The next step is to specify the command line arguments in additionto the options, the shell treats the first argument as the name of a file since it reads the command line, and the remaining arguments are set as the shell positional parameters, otherwise the shellreads commands from its standard input\&.
+.sp
+\fBCshell \- $ cat [File Name]\fR
+.SH "COMMANDS"
+.sp
+The Cshell interprets the words it reads according to a language, specifying of which is outside the scope of this man page\&.Essentially, however, a line is read and if the first word of the line, isnot a reserved word, the Cshell has recognized asimple command\&.Otherwise, a complex command or some other special construction may have been recognized
+.SH "CSHELL COMMANDS"
+.sp
+If a simple command has been recognized, the Cshell performs the following actions:
+.sp
+\fB1\fR \- The main words of the form \fI\*(Aqname\-value\fR\*(Aq are deleted and assigned to the simple command environment\&. Redirect operators and their arguments (as described below) are deleted and saved for processing\&.
+.sp
+\fB2\fR \- The remaining words and the remaining first word is considered the command name and the command is found\&. The remaining words are considered the command arguments\&.3\-If no command name occurred, the variable mappings \fIname\-value\fR recognized in element 1 affect the current Cshell\&.
+.SH "EXAMPLES OF SIMPLE CSHELL COMMANDS"
+.sp
+These commands are only executable in Cshell and in better versions of Cshell\&.
+.sp
+\fBls\fR \- Bel list contents of the directory where the prompt is loc ated or a specified one
+.sp
+\fBpwd\fR \- Prints the name of the current directory and the working directory
+.sp
+\fBcp\fR \- Copies files and directories to a specified directory
+.sp
+\fBmv\fR \(en Moves or renames a file or directory
+.sp
+\fBcat\fR \- Prints the contents of an on\-screen file
+.SH "COMPLEX COMMANDS"
+.sp
+In this version of Cshell complex commands are not available and can be available in the future version of Cshell Complex commands are combinations of simple commands with control operators or reserved words, creating together a larger complex command\&. More generally, a command is one of the following:
+.sp
+\(bu \fIsimple command\fR
+.sp
+\(bu \fIpipe\fR
+.sp
+\(bu \fIlist or composite list\fR
+.sp
+\(bu \fIcomposite command\fR
+.sp
+\(bu \fIfunction definition\fR
+.sp
+Unless otherwise noted, the output status of a command is that of the last simple command executed by the command\&.
+.SH "CALLS TO SYSTEMA IN CSHELL"
+.sp
+\fBexecve\fR:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+#include <unistd\&.h>
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+int execve(const char *pathname, char *const argv[], char*const envp[]);
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+This function comes from the exeve family that are a family of functions that replaces the image of the process that is running with a new image of the same process, this means that the program that is running that process will be overwritten with another new program, it will not create a new process if the old one is not overwritten
+.sp
+\fBexit\fR :
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+#include <stdlib\&.h>
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+noreturn void exit(int status);
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+receives the signal from the parent in status and returnsnothing, exit causes the normal termination of the process\&.
+.sp
+\fBfork\fR:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+#include <unistd\&.h>
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+pid_t fork (empty);
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+Using fork creates a new process in another memory allocation by copying the current image into that new space that will run it at that time\&. The new process is called a son and the old father\&. this is used in case there is a failure the program follows with the parent and kills the child\&.
+.sp
+\fBwait\fR:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+#include <sys/types\&.h>
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+#include <sys/wait\&.h>
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+pid_t wait(int *wstatus);
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+the call to the waiting system suspends the execution of the call process until one of your children finishes\&. THAT IS TO SAY that if it is not applied I would finish the father in colloquial language would kill him first than the son\&.
+.sp
+\fBkill\fR:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+#include <señal\&.h>
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+int kill (pid_t pid , int sig );
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+receives the status of a process that is pid_t pid and receives the signal from the int sig process\&.
+.sp
+it is a call to the system sends a signal to a process or even group of processes, it helps us kill child processes when the child ends up combined with skill\&.
+.SH "ENVIROMENT"
+.sp
+It is a colon\-delimited directory list in which your shell searches when you enter a command\&. All executables are saved in different directories on Linux and Unix operating systems\&.
+.sp
+\fBHOME\fR
+.sp
+\fBPATH\fR
+.sp
+\fBMAIL\fR
+.sp
+\fBCDPATH\fR
+.sp
+\fBPS1\fR
+.sp
+\fBMAILCHECK\fR
+.sp
+\fBPS2\fR
+.sp
+\fBMAILPATH\fR
+.sp
+\fBPS4\fR
+.sp
+\fBIFS\fR
+.sp
+\fBTERM\fR
+.sp
+\fBHISTSIZE\fR
+.sp
+\fBPWD\fR
+.sp
+\fBOLDPWD\fR
+.sp
+\fBPPID\fR
+.SH "SEARCH FOR ROUTES"
+.sp
+When locating a command, the Cshell first looks to see if it has ashell function with that name\&.Then look for a built\-in command with that name\&. If a built\-in command is not found, one of the two things happens:
+.sp
+\fB1\fR \- Command names containing a forward slash are simply executed without performing any search\&.
+.sp
+\fB2\fR \- The Cshell searches for eachPATH entry\&. The value of the PATH variable must be a series of entries separated by a colon\&. Eachentry consists of a directory name\&. The current directory can be implicitly indicated by an empty directory name or explicitly for asingle period\&.
+.SH "EXAMPLES"
+.sp
+\fB1\fR \(en The executable is commanded, from which the system prompt will exit for command input, in this case the pwd command is commanded to display the address of the directory where we are, and thenexit with the exit command
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+\&./hsh
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+cshell\-$ pwd
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+/home/user/Betty
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+cshell\-$ exit
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+\fB2\fR \- In this case we are passing the echo \fI/bin/ls\fR command to the command execution output \fI\&./hsh\fR to print non\-interactively the list of system files and directories
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+$ echo \(lq/bin/ls\(rq | \&./hsh
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+cshell\-$ exit
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+\fB3\fR \(en This is an example of interective execution in which we run our Shell and put the cat command at the prompt to show us the contents of the text file\&.txt and then exit the program
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+\&./hsh
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+cshell\-$ cat text\&.txt
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+cshell\-$ exit
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+\fB4\fR \(en In this code we will send by the system prompt the command \fIls \-la\fR the non\-iterative mode to send it to the execution of the Cshell and print by console the list of directories and files in long format and that they are hidden so that they are then exited from the Cshell
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+$ ls \-la | \&. /hsh
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+cshell\-$ exit
+.fi
+.if n \{\
+.RE
+.\}
+.SH "EXIT"
+.sp
+Each command has an output state that can influence the behavior of other Cshellcommands\&. The paradigm is that a command exits with zero for normal or success, and is not zero for error, error, or false indication\&. The man page of each command must indicate the various output codes and what they mean\&. In addition, built\-in commands return output codes, as does an executed Cshell function\&.
+.sp
+If a command consists entirely of variable mappings, the output state of the command is that of the last command substitution if it exists, otherwise 0\&.
+.SH "BUGGS"
+.sp
+\fB1\fR\&. The Cshell does not handle special characters that have a function subject to the commands found in the environment variable directories, example %\&. &, *, >, < among others\&.
+.sp
+\fB2\fR\&. The Shell does not handle output codes other than zero, except for the exit command when it is accompanied by a number\&.
+.sp
+\fB3\fR\&. In the case of the man command instead of being displayed as a navigable screen, the contents of the corresponding manual are printed on the terminal\&.
+.SH "COPYRIGHT"
+.sp
+Copyright \(co 2021 Holberton School COH\-14 Bogota, Colombia\&. All Rights Reserved\&.
+.SH "AUTHOR"
+.PP
+\fBCristian Pinzón, Julio Cesar Arenas, Juan Sebastián Tovar\&.\fR
+.RS 4
+Author.
+.RE

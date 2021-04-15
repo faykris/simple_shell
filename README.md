@@ -78,3 +78,6 @@ The next  step is  to  specify the command line arguments  in addition to the op
 - **Cristian Pinzón Capera** - [faykris](https://github.com/faykris)
 - **Julio Cesar Arenas** - [jihuder](https://github.com/jihuder)
 - **Juan Sebastián Tovar** - [juanstm200](https://github.com/juanstm200)
+
+<p align="center"><img src="https://www.holbertonschool.com/holberton-logo.png"/>
+<br>Holberton School - Cohort 14 BOG Colombia 2021</p>
